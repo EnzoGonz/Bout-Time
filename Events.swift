@@ -31,7 +31,6 @@ func randomGenerator() -> Int {
 }//End randomGenerator
 
 
-// FIXME: Reset usedIndex
 
 var usedIndex: [Int] = []
 

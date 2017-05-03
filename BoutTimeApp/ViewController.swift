@@ -23,13 +23,36 @@ class ViewController: UIViewController {
         fourLabel.text = orderOfEvents[generateRandomEvent()]
         
         usedIndex = []
-    }
+    }//End assignEventsToLabel
     
+    var timer = Timer()
+    var counter = 59
+    
+    func countdownTimer(){
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.startCountdown), userInfo: nil, repeats: true)
+       
+    }//End countdownTimer
+    
+    func startCountdown(){
+        if counter != 0 {
+            countdownLabel.text = ":\(counter)"
+            counter -= 1
+        } else {
+            timer.invalidate()
+            countdownLabel.text = "You Lose!"
+            counter = 59
+        }
+    }//End startCountdown
+    
+    
+    // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         assignEventsToLabels()
+        countdownTimer()
     }
     
     override func didReceiveMemoryWarning() {
